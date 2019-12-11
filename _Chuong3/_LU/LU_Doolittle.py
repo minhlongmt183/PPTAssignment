@@ -138,7 +138,7 @@ def main():
     print("nghiem he phuong trinh la: ")
 
     for i in range(N):
-        print("X[" + str(i) + "]= " + str(round(X[i], 2)))
+        print("X[{0}] = {1:.4f}".format(i,X[i]))
     
     return
    

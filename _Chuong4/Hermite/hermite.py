@@ -47,3 +47,9 @@ def hermite(x,y,z):
     for i in range(2*n):
         P(i) = Q[i][i]
     return
+
+def use_hermite(x,y,z,xx):
+    n = len(x)
+    X = InitMatrix(2*n, 1)
+    for i in range(n):
+        
