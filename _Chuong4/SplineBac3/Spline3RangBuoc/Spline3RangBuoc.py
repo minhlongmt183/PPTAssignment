@@ -48,9 +48,10 @@ def cspline(x, y, alpha, beta):
 
     print(len(h), N)
     A[0] = 2*h[0]
-    A[N-1] = 2*h[N-2]
+    #A[N-1] = 2*h[N-2]
     B[0] = h[0]
     C[0] = h[0]
+    
 
     for i in range(1,N-1):
         A[i] = 2*(h[i-1] + h[i])
@@ -58,13 +59,16 @@ def cspline(x, y, alpha, beta):
         C[i] = h[i]
 
     D[0] = 3*(y[1] - y[0]) / h[0] - 3*alpha
-    D[N-1] = 3*beta -3*(y[N-1] - y[N-2])/h[N-2]
+    #D[N-1] = 3*beta -3*(y[N-1] - y[N-2])/h[N-2]
     
     for i in range(1,N-1):
         D[i] = 3*(y[i+1] - y[i])/h[i] - 3*(y[i] - y[i-1])/h[i-1]
 
     
     c = tridiag(N,A,B,C,D)
+    
+    print("ma tran c = {}".format(c))
+
 
     a = np.zeros(N-1)
     b = np.zeros(N-1)
@@ -108,9 +112,9 @@ if __name__ == "__main__":
 
     # alpha = float(input("nhap alpha: "))
     # beta = float(input("nhap beta: "))
-    X = np.array([0,1,2])
-    Y = np.array([1,2,1])
-    alpha = 0
+    X = np.array([0.5,0.6,0.9, 1.1, 1.2, 1.3, 1.4])
+    Y = np.array([2.65, 2.82, 3.46, 4.0, 4.32, 4.67,5.05])
+    alpha = 4
     beta = 0
 
     (a,b,c,d) = cspline(X,Y,alpha,beta)
